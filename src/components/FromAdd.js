@@ -1,29 +1,6 @@
 import React, { Component } from 'react';
-import { addTodo } from '../actions';
 
 class FromAdd extends Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            text: ''
-        };
-    }
-
-    addText = event => {
-        const textNew = event.target.value;
-        this.setState({ text: textNew });
-    };
-
-    submitTodo = event => {
-        if (this.state.text === '') {
-            return;
-        }
-
-        this.props.dispatch(addTodo(this.state.text));
-        this.setState({ text: '' });
-    };
-
     render() {
         return (
             <div className="card-content">
@@ -34,12 +11,12 @@ class FromAdd extends Component {
                                 className="input is-primary"
                                 type="text"
                                 placeholder="Add input"
-                                value={this.state.text}
-                                onChange={this.addText}
+                                value={this.props.todoNew}
+                                onChange={this.props.addText}
                             />
                         </div>
                     </div>
-                    <button type="button" onClick={this.submitTodo}>
+                    <button type="button" onClick={this.props.submitTodo}>
                         Add
                     </button>
                 </div>

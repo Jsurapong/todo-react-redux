@@ -1,15 +1,11 @@
 import { connect } from 'react-redux';
 import ListTodo from '../components/ListTodo';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
     todo: state.todo,
+    todoNew: state.todoNew,
     edit: state.todoEdit,
     test: 'List'
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({});
-
-export default connect(
-    mapStateToProps,
-    mapDispatchToProps
-)(ListTodo);
+export default connect(mapStateToProps)(ListTodo);

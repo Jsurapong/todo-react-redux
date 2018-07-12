@@ -21,3 +21,8 @@ export const setEditTodo = text => ({
     type: 'SETEDIT_TODO',
     text
 });
+
+export const setAddTodo = text => ({
+    type: 'SETADD_TODO',
+    text
+});

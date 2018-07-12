@@ -1,5 +1,6 @@
 let initialState = {
     todo: [],
+    todoNew: '',
     todoEdit: {
         text: '',
         index: '',
@@ -9,14 +10,24 @@ let initialState = {
 
 export default (state = initialState, action) => {
     switch (action.type) {
+        case 'SETADD_TODO':
+            return {
+                todo: [...state.todo],
+                todoNew: action.text,
+                todoEdit: {
+                    text: '',
+                    index: ''
+                }
+            };
         case 'ADD_TODO':
             return {
                 todo: [
                     ...state.todo,
                     {
-                        text: action.text
+                        text: state.todoNew
                     }
                 ],
+                todoNew: '',
                 todoEdit: {
                     text: '',
                     index: ''
@@ -32,6 +43,7 @@ export default (state = initialState, action) => {
 
             return {
                 todo: [...state.todo],
+                todoNew: '',
                 todoEdit: todoEdit
             };
         case 'SETEDIT_TODO':
@@ -42,6 +54,7 @@ export default (state = initialState, action) => {
 
             return {
                 todo: [...state.todo],
+                todoNew: '',
                 todoEdit: todoEditSet
             };
         case 'UPDATE_TODO':
@@ -53,6 +66,7 @@ export default (state = initialState, action) => {
             };
             return {
                 todo: [...newTodo],
+                todoNew: '',
                 todoEdit: {
                     text: '',
                     index: '',
@@ -64,11 +78,13 @@ export default (state = initialState, action) => {
             newState.splice(action.index, 1);
             return {
                 todo: [...newState],
+                todoNew: '',
                 todoEdit: {
                     text: '',
                     index: ''
                 }
             };
+
         default:
             return state;
     }

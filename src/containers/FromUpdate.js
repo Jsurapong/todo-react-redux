@@ -3,17 +3,18 @@ import FromUpdate from '../components/FromUpdate';
 
 import { setEditTodo, updateTodo } from '../actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
     todo: state.todo,
+    todoNew: state.todoNew,
     edit: state.todoEdit,
     test: 'Update'
 });
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
+const mapDispatchToProps = dispatch => ({
     ChangeTodo: event => {
         dispatch(setEditTodo(event.target.value));
     },
-    SubmitUpdate: event => {
+    SubmitUpdate: () => {
         dispatch(updateTodo());
     }
 });
